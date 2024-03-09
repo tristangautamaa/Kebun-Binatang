@@ -2,6 +2,6 @@ package KebunBinatang;
 
 public class Hewan {
     public static void main(String[] args) {
-        system.out.println("test number 1");
+        System.out.println("hari pertama test");
     }
 }
