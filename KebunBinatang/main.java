@@ -8,9 +8,6 @@ public class main {
         Pengunjung pengunjung1 = new pengjunjung("Jonathan", "17");
         Pengunjung pengunjung2 = new pengunjung("Fernando", "18");
 
-        Kegiatan kegiatan1 = new Kegiatan("Makan");
-        Kegiatan kegiatan2 = new Kegiatan("Mandi");
-
         // to be continued
         hewan1.kegiatan1();
         hewan2.kegiatan2();
