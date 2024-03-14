@@ -13,5 +13,6 @@ public class main {
         // to be continued
         hewan1.kegiatan1();
         hewan2.kegiatan2();
+        hewan3.kegiatan3();
     }
 }
