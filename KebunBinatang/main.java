@@ -5,12 +5,12 @@ public class main {
         Hewan hewan1 = new Hewan("Harimau", "Daging", "Hutan");
         Hewan hewan2 = new Hewan("Kambing", "Rumput", "Ladang");
         Hewan hewan3 = new Hewan("Elang", "Daging", "Gunung");
-        Pengunjung pengunjung1 = new pengjunjung("Jonathan", "17");
+        Pengunjung pengunjung1 = new pengunjung("Jonathan", "17");
         Pengunjung pengunjung2 = new pengunjung("Fernando", "18");
 
         // to be continued
-        hewan1.kegiatan1();
-        hewan2.kegiatan2();
-        hewan3.kegiatan3();
+        pengunjung1.info();
+        pengunjung2.info();
+        pengunjung1.info();
     }
 }
