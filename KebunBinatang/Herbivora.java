@@ -1,5 +1,5 @@
 package KebunBinatang;
 
-public class Habitat {
+public class Herbivora {
 
 }

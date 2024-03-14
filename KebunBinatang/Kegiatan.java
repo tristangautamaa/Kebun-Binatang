@@ -1,7 +1,7 @@
 package KebunBinatang;
 
 public class Kegiatan {
-    // Attribute to Astronaut Class
+    // Attribute to nama hewan
     String name;
 
     // Constructor to initialize the attributes
