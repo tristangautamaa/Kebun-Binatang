@@ -1,5 +1,5 @@
 package KebunBinatang;
 
-public class Zookeper {
+public class Pengunjung {
 
 }
