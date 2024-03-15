@@ -36,4 +36,9 @@ public class Pengunjung {
     public void setAsal(String asal){
          this.asal = asal;
     }
+
+    public void info() {
+        System.out.println("Pengunjung ini bernama " + nama);
+        System.out.println(nama + " berasal dari " + asal + " dan berusia " + umur + " tahun");
+    }
 }
