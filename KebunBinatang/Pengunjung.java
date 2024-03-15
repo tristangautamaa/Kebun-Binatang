@@ -4,8 +4,9 @@ public class Pengunjung {
     // isinya atribut dan constructor dari pengunjungnya
     private String nama;
     private int umur;
+    private String asal;
 
-    public Pengunjung(String nama, int umur) {
+    public Pengunjung(String nama, int umur, String asal) {
     this.nama = nama;
     this.umur = umur;
     }
@@ -25,5 +26,13 @@ public class Pengunjung {
 
     public void setUmur(int umur) {
         this.umur = umur;
+    }
+
+    public String asal(){
+        return asal;
+    }
+
+    public void asal(String asal){
+        return asal;
     }
 }
