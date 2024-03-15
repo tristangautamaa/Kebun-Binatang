@@ -10,7 +10,6 @@ public class main {
         
         pengunjung1.info();
         pengunjung2.info();
-        pengunjung1.info();
 
         Hewan hewan1 = new Hewan("Harimau", "Daging", "Hutan");
         hewan1.setDeskripsi("Mamalia besar dengan gigi tajam dan loreng oranye hitam.");
