@@ -9,6 +9,7 @@ public class Pengunjung {
     public Pengunjung(String nama, int umur, String asal) {
         this.nama = nama;
         this.umur = umur;
+        this.asal = asal;
     }
 
     // getter setter untuk mencegah input manual
@@ -33,6 +34,6 @@ public class Pengunjung {
     }
 
     public void setAsal(String asal){
-         this.asalasal;
+         this.asal;
     }
 }
