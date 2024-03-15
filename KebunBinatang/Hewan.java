@@ -10,22 +10,22 @@ public abstract class Hewan {
         this.makanan = makanan;
         this.habitat = habitat;
     }
-    public String nama() {
+    public String getNama() {
         return nama;
     }
-    public void setnama(String nama) {
+    public void setNama(String nama) {
         this.nama = nama;
     }
-    public String makanan() {
+    public String getMakanan() {
         return makanan;
     }
-    public void setmakanan(String makanan) {
+    public void setMakanan(String makanan) {
         this.makanan = makanan;
     }
-    public String habitat() {
+    public String getHabitat() {
         return habitat;
     }
-    public void sethabitat(String habitat) {
+    public void setHabitat(String habitat) {
         this.habitat = habitat;
     }
 
