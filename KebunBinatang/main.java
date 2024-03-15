@@ -5,8 +5,8 @@ public class main {
         Hewan hewan1 = new Hewan("Harimau", "Daging", "Hutan");
         Hewan hewan2 = new Hewan("Kambing", "Rumput", "Ladang");
         Hewan hewan3 = new Hewan("Elang", "Daging", "Gunung");
-        Pengunjung pengunjung1 = new Pengunjung("Jonathan", "17", "Jakarta");
-        Pengunjung pengunjung2 = new Pengunjung("Fernando", "18", "Pontianak");
+        Pengunjung pengunjung1 = new Pengunjung("Jonathan", 17, "Jakarta");
+        Pengunjung pengunjung2 = new Pengunjung("Fernando", 18, "Pontianak");
         
         pengunjung1.info();
         pengunjung2.info();
