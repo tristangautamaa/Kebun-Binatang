@@ -28,11 +28,11 @@ public class Pengunjung {
         this.umur = umur;
     }
 
-    public String asal(){
+    public String getAsal(){
         return asal;
     }
 
-    public void asal(String asal){
-        return asal;
+    public void setAsal(String asal){
+         this.asalasal;
     }
 }
