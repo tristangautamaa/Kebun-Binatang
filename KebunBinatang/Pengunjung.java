@@ -1,19 +1,19 @@
 package KebunBinatang;
 
-public class Pengunjung { 
+public class Pengunjung {
     // isinya atribut dan constructor dari pengunjungnya
     private String nama;
     private int umur;
     private String asal;
 
     public Pengunjung(String nama, int umur, String asal) {
-    this.nama = nama;
-    this.umur = umur;
-    this.asal = asal;
+        this.nama = nama;
+        this.umur = umur;
+        this.asal = asal;
     }
 
     // getter setter untuk mencegah input manual
-    public String getNama(){
+    public String getNama() {
         return nama;
     }
 
@@ -29,11 +29,11 @@ public class Pengunjung {
         this.umur = umur;
     }
 
-    public String getAsal(){
+    public String getAsal() {
         return asal;
     }
 
     public void setAsal(String asal){
-         this.asalasal;
+         this.asal;
     }
 }
