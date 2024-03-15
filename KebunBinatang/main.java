@@ -8,6 +8,9 @@ public class main {
         Pengunjung pengunjung1 = new Pengunjung("Jonathan", 17, "Jakarta");
         Pengunjung pengunjung2 = new Pengunjung("Fernando", 18, "Pontianak");
         
+        hewan1.info();
+        hewan2.info();
+        hewan3.info();
         pengunjung1.info();
         pengunjung2.info();
 
