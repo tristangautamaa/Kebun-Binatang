@@ -13,11 +13,20 @@ public abstract class Hewan {
     public String nama() {
         return nama;
     }
+    public void setnama(String nama) {
+        this.nama = nama;
+    }
     public String makanan() {
         return makanan;
     }
+    public void setmakanan(String makanan) {
+        this.makanan = makanan;
+    }
     public String habitat() {
         return habitat;
+    }
+    public void sethabitat(String habitat) {
+        this.habitat = habitat;
     }
 
     // ISINYA ATRIBUT nama, makanan, habitat dan constructornya sehingga di
