@@ -10,14 +10,23 @@ public abstract class Hewan {
         this.makanan = makanan;
         this.habitat = habitat;
     }
-    public String nama() {
+    public String getNama() {
         return nama;
     }
-    public String makanan() {
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+    public String getMakanan() {
         return makanan;
     }
-    public String habitat() {
+    public void setMakanan(String makanan) {
+        this.makanan = makanan;
+    }
+    public String getHabitat() {
         return habitat;
+    }
+    public void setHabitat(String habitat) {
+        this.habitat = habitat;
     }
 
     // ISINYA ATRIBUT nama, makanan, habitat dan constructornya sehingga di
