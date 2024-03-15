@@ -34,6 +34,6 @@ public class Pengunjung {
     }
 
     public void setAsal(String asal){
-         this.asalasal;
+         this.asal;
     }
 }
