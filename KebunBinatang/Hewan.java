@@ -1,12 +1,12 @@
 package KebunBinatang;
 
 public abstract class Hewan {
-private String namahewan;
-private String makanan;
-private String habitat;
-private String deskripsi;
-private String suara;
-private String kegiatan;
+protected String namahewan;
+protected String makanan;
+protected String habitat;
+protected String deskripsi;
+protected String suara;
+protected String kegiatan;
 
 public Hewan(String namahewan, String makanan, String habitat) {
     this.namahewan = namahewan;
@@ -51,14 +51,7 @@ public void setKegiatan(String kegiatan) {
 }
 
 // Add a method to display the information
-public void info() {
-    System.out.println("Nama Hewan: " + namahewan);
-    System.out.println("Makanan: " + makanan);
-    System.out.println("Habitat: " + habitat);
-    System.out.println("Deskripsi: " + deskripsi);
-    System.out.println("Suara: " + suara);
-    System.out.println("Kegiatan: " + kegiatan);
-}
+public abstract void info();
 
 }
     // ISINYA ATRIBUT nama, makanan, habitat dan constructornya sehingga di
