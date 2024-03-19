@@ -1,13 +1,15 @@
 package KebunBinatang;
+
 public class Herbivora extends Hewan {
 
+    // TAMBAHKAN KEGIATAN, DESKRIPSI, SUARA
     public Herbivora(String nama, String makanan, String habitat) {
         super(nama, makanan, habitat);
     }
 
     @Override
-    
-    // nah ini masih blom pasti, soalnya belum ada gambaran 
+
+    // nah ini masih blom pasti, soalnya belum ada gambaran
     // yang jelas dengan outputnya
     // soal kegiatan atau info..
     public void info() {
@@ -20,8 +22,7 @@ public class Herbivora extends Hewan {
     }
 }
 
-    // Isinya SUPER dari --> name, makanan, habitat
-    // Mengandung override sebuah method yang tidak ada di abstract
-    // Override itu keluarnya bareng tapi outputnya berbeda
-    // Mengandung hewan sedang melakukan apa
-
+// Isinya SUPER dari --> name, makanan, habitat
+// Mengandung override sebuah method yang tidak ada di abstract
+// Override itu keluarnya bareng tapi outputnya berbeda
+// Mengandung hewan sedang melakukan apa

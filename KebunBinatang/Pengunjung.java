@@ -33,8 +33,8 @@ public class Pengunjung {
         return asal;
     }
 
-    public void setAsal(String asal){
-         this.asal = asal;
+    public void setAsal(String asal) {
+        this.asal = asal;
     }
 
     public void info() {
