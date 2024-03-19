@@ -2,10 +2,8 @@ package KebunBinatang;
 
 public class main {
     public static void main(String[] args) {
-        // TAMBAHIN SUARA, KEGIATAN, DESKRIPSI
         Karnivora hewan1 = new Karnivora("Harimau", "Daging", "Hutan");
-        Karnivora hewan3 = new Karnivora("Elang", "Daging", "Gunung", "suara");
-
+        Karnivora hewan3 = new Karnivora("Elang", "Daging", "Gunung");
         Herbivora hewan2 = new Herbivora("Kambing", "Rumput", "Ladang");
 
         Pengunjung pengunjung1 = new Pengunjung("Jonathan", 17, "Jakarta");
@@ -17,10 +15,7 @@ public class main {
         pengunjung1.info();
         pengunjung2.info();
 
-        // variable cuman bisa di panggil sekali kalo lebih dari satu maka akan
-        // overlap/duplicate
-        // bikin public void buat output, bukan getting setter
-
+        hewan1.setDeskripsi("Hewan karnivora yang dengan cakar yang besar");
         hewan1.setSuara("roar");
         hewan1.setKegiatan("makan");
 
