@@ -10,7 +10,7 @@ public class Herbivora extends Hewan {
     // nah ini masih blom pasti, soalnya belum ada gambaran 
     // yang jelas dengan outputnya
     // soal kegiatan atau info..
-    public void info() { 
+    public void info() {
         System.out.println("Nama Hewan: " + namahewan);
         System.out.println("Makanan: " + makanan);
         System.out.println("Habitat: " + habitat);
