@@ -38,6 +38,7 @@ public class Pengunjung {
     }
 
     public void info() {
+        System.out.println();
         System.out.println("Pengunjung ini bernama " + nama);
         System.out.println(nama + " berasal dari " + asal + " dan berusia " + umur + " tahun");
     }

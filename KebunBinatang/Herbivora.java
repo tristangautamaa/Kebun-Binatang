@@ -1,6 +1,6 @@
 package KebunBinatang;
 
-public class Herbivora extends Hewan {
+public class Herbivora extends Karnivora {
 
     private String deskripsi;
     private String suara;
@@ -19,10 +19,19 @@ public class Herbivora extends Hewan {
         System.out.println("Nama Hewan: " + namahewan);
         System.out.println("Jenis Makanan: " + makanan);
         System.out.println("Habitat: " + habitat);
+
+    }
+
+    public void deskripsi() {
         System.out.println("Deskripsi: " + deskripsi);
+    }
+
+    public void suara() {
         System.out.println("Suara: " + suara);
+    }
+
+    public void kegiatan() {
         System.out.println("Kegiatan: " + kegiatan);
-        System.out.println();
     }
 
     public void setDeskripsi(String deskripsi) {
