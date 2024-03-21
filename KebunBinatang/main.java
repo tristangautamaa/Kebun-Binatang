@@ -38,8 +38,8 @@ public class main {
                 System.out.println("Jumlah binatang di kebun binatang: " + jumlahBinatang);
 
 
-                Pengunjung pengunjung1 = new Pengunjung("Jonathan", 17, "Jakarta");
-                Pengunjung pengunjung2 = new Pengunjung("Fernando", 18, "Pontianak");
+                Pengunjung pengunjung1 = new Pengunjung("Jonathan", 17, "Jakarta", "Laki-laki", "Kambing");
+                Pengunjung pengunjung2 = new Pengunjung("Fernando", 18, "Pontianak", "Perempuan", "Harimau");
 
                 hewan1.info();
                 hewan2.info();
@@ -52,5 +52,8 @@ public class main {
 
                 pengunjung1.info();
                 pengunjung2.info();
+
+                pengunjung1.HewanFavorit();
+                pengunjung2.HewanFavorit();
         }
 }
