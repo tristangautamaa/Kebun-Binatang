@@ -2,6 +2,7 @@ package KebunBinatang;
 
 public class main {
         public static void main(String[] args) {
+                Hewan[] daftarHewan = new Hewan[3];
                 Karnivora hewan1 = new Karnivora("Harimau", "Daging", "Hutan",
                                 "Hewan karnivora yang memiliki cakar yang besar",
                                 "Roar", "Makan");
@@ -12,6 +13,30 @@ public class main {
                                 "Hewan berdarah panas, mempunyai sayap dan tubuh yang diselubungi bulu pelepah",
                                 "Skriaa",
                                 "Bertengger");
+                
+                
+                daftarHewan[0] = hewan1;
+                daftarHewan[1] = hewan2;
+                daftarHewan[2] = hewan3;
+
+                for (Hewan hewan : daftarHewan) {
+                        hewan.info(); 
+                        if (hewan instanceof Karnivora) {
+                            Karnivora karnivora = (Karnivora) hewan; 
+                            karnivora.deskripsi();
+                            karnivora.suara();
+                            karnivora.kegiatan();
+                        } else if (hewan instanceof Herbivora) {
+                            Herbivora herbivora = (Herbivora) hewan; 
+                            herbivora.deskripsi();
+                            herbivora.suara();
+                            herbivora.kegiatan();
+                        }
+                    }
+        
+                int jumlahBinatang = daftarHewan.length;
+                System.out.println("Jumlah binatang di kebun binatang: " + jumlahBinatang);
+
 
                 Pengunjung pengunjung1 = new Pengunjung("Jonathan", 17, "Jakarta");
                 Pengunjung pengunjung2 = new Pengunjung("Fernando", 18, "Pontianak");
