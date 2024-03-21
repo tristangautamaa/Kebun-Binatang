@@ -19,19 +19,18 @@ public class Karnivora extends Hewan {
         System.out.println("Nama Hewan: " + namahewan);
         System.out.println("Jenis Makanan: " + makanan);
         System.out.println("Habitat: " + habitat);
-        System.out.println();
     }
 
     public void deskripsi() {
-        System.out.println("Deskripsi: " + deskripsi);
+        System.out.println("Deskripsi dari " + namahewan + ": " + deskripsi);
     }
 
     public void suara() {
-        System.out.println("Suara: " + suara);
+        System.out.println("Suara dari " + namahewan + ": " + suara);
     }
 
     public void kegiatan() {
-        System.out.println("Kegiatan: " + kegiatan);
+        System.out.println("Kegiatan dari " + namahewan + ": " + kegiatan);
     }
 
     public void setDeskripsi(String deskripsi) {
