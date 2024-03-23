@@ -9,6 +9,9 @@ public class Herbivora extends Karnivora {
     public Herbivora(String namahewan, String makanan, String habitat, String deskripsi, String suara,
             String kegiatan) {
         super(namahewan, makanan, habitat, deskripsi, suara, kegiatan);
+        this.deskripsi = deskripsi;
+        this.suara = suara;
+        this.kegiatan = kegiatan;
     }
 
     @Override
