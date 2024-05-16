@@ -2,66 +2,14 @@ package KebunBinatang;
 
 import java.util.Scanner;
 
-public class main {
-    static Hewan[] hewanArray = new Hewan[10]; // Adjust size as needed
-    static int hewanCount = 0;
-    static int currentIndex = 0;
-    static UndoAction[] undoStack = new UndoAction[10]; // Array-based stack
-    static int top = -1; // Index of the top element in the stack
+class ZooKeeper {
+    Hewan[] hewanArray = new Hewan[10]; // Adjust size as needed
+    int hewanCount = 0;
+    int currentIndex = 0;
+    UndoAction[] undoStack = new UndoAction[10]; // Array-based stack
+    int top = -1; // Index of the top element in the stack
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        ZooKeeper zooKeeper = new ZooKeeper(); // Create an instance of ZooKeeper
-        VisitorQueue visitorQueue = new VisitorQueue(); // Create an instance of VisitorQueue
-
-        while (true) {
-            System.out.println("\nMenu:");
-            System.out.println("1. Tambah Hewan");
-            System.out.println("2. Tampilkan Hewan");
-            System.out.println("3. Swipe Hewan");
-            System.out.println("4. Swap Hewan");
-            System.out.println("5. Undo");
-            System.out.println("6. Tambah Pengunjung"); // Add this option for Pengunjung
-            System.out.println("7. Tampilkan Pengunjung"); // Add this option for Pengunjung
-            System.out.println("8. Keluar");
-            System.out.print("Pilih menu: ");
-
-            int pilihan = scanner.nextInt();
-            scanner.nextLine(); // Consume newline character
-
-            switch (pilihan) {
-                case 1:
-                    zooKeeper.tambahHewan(scanner);
-                    break;
-                case 2:
-                    zooKeeper.tampilkanHewan();
-                    break;
-                case 3:
-                    zooKeeper.swipeHewan(scanner);
-                    break;
-                case 4:
-                    zooKeeper.swapHewan(scanner);
-                    break;
-                case 5:
-                    zooKeeper.undo();
-                    break;
-                case 6:
-                    visitorQueue.tambahPengunjung(scanner); // Add Pengunjung
-                    break;
-                case 7:
-                    visitorQueue.tampilkanPengunjung(); // Display Pengunjung
-                    break;
-                case 8:
-                    System.out.println("Keluar dari program.");
-                    scanner.close();
-                    return;
-                default:
-                    System.out.println("Pilihan tidak valid.");
-            }
-        }
-    }
-
-    static void tambahHewan(Scanner scanner) {
+    public void tambahHewan(Scanner scanner) {
         System.out.println("\nJenis Hewan:");
         System.out.println("1. Herbivora");
         System.out.println("2. Karnivora");
@@ -114,7 +62,7 @@ public class main {
         System.out.println("Hewan berhasil ditambahkan!");
     }
 
-    static void tampilkanHewan() {
+    public void tampilkanHewan() {
         if (hewanCount == 0) {
             System.out.println("Tidak ada hewan di dalam daftar.");
             return;
@@ -126,7 +74,7 @@ public class main {
         }
     }
 
-    static void swipeHewan(Scanner scanner) {
+    public void swipeHewan(Scanner scanner) {
         if (hewanCount == 0) {
             System.out.println("Tidak ada hewan di dalam daftar.");
             return;
@@ -160,7 +108,7 @@ public class main {
         push(new UndoAction(UndoAction.Type.SWIPE, currentIndex));
     }
 
-    static void swapHewan(Scanner scanner) {
+    public void swapHewan(Scanner scanner) {
         if (hewanCount < 2) {
             System.out.println("Tidak cukup hewan untuk di-swap.");
             return;
@@ -191,7 +139,7 @@ public class main {
         System.out.println("Hewan berhasil di-swap!");
     }
 
-    static void undo() {
+    public void undo() {
         if (isEmpty()) {
             System.out.println("Tidak ada aksi yang dapat di-undo.");
             return;
@@ -217,11 +165,11 @@ public class main {
     }
 
     // Helper functions for the manual stack
-    static boolean isEmpty() {
+    boolean isEmpty() {
         return (top == -1);
     }
 
-    static void push(UndoAction action) {
+    void push(UndoAction action) {
         if (isFull()) {
             System.out.println("Stack is full");
             return;
@@ -230,7 +178,7 @@ public class main {
         undoStack[top] = action; // Assign the action to the current top index
     }
 
-    static boolean isFull() {
+    boolean isFull() {
         return (top == undoStack.length - 1);
     }
 }

@@ -2,14 +2,14 @@ package KebunBinatang;
 
 import java.util.Scanner;
 
-class Queue {
-    private int maxSize = 5; // Adjust the maximum size of the queue
+class VisitorQueue {
+    private int maxSize = 5;
     private Pengunjung[] queueArray = new Pengunjung[maxSize];
     private int front;
     private int rear;
     private int nItems;
 
-    public Queue() {
+    public VisitorQueue() {
         front = 0;
         rear = -1;
         nItems = 0;
@@ -21,7 +21,6 @@ class Queue {
             return;
         }
 
-        // Get visitor details
         System.out.print("Nama pengunjung: ");
         String nama = scanner.nextLine();
         System.out.print("Umur pengunjung: ");
@@ -34,10 +33,8 @@ class Queue {
         System.out.print("Hewan favorit pengunjung: ");
         String hewanFavorit = scanner.nextLine();
 
-        // Create a new Pengunjung object
         Pengunjung pengunjung = new Pengunjung(nama, umur, asal, jenisKelamin, hewanFavorit);
 
-        // Enqueue the Pengunjung
         enqueue(pengunjung);
         System.out.println("Pengunjung berhasil ditambahkan ke antrian.");
     }

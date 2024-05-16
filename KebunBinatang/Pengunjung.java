@@ -1,6 +1,6 @@
 package KebunBinatang;
 
-public class Pengunjung {
+class Pengunjung {
     // isinya atribut dan constructor dari pengunjungnya
     private String nama;
     private int umur;

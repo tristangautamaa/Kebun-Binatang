@@ -1,6 +1,6 @@
 package KebunBinatang;
 
-public class SingleLinkedList {
+class SingleLinkedList {
     Node head;
 
     class Node {
