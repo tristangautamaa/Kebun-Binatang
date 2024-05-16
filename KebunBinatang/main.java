@@ -1,56 +1,134 @@
 package KebunBinatang;
 
+import java.util.Scanner;
+
 public class main {
+    static Hewan[] hewanArray = new Hewan[10]; // Adjust size as needed
+    static int hewanCount = 0;
+    static int currentIndex = 0;
+
     public static void main(String[] args) {
-        Hewan[] daftarHewan = new Hewan[3];
-        Karnivora hewan1 = new Karnivora("Harimau", "Daging", "Hutan",
-                "Hewan karnivora yang memiliki cakar yang besar",
-                "Roar", "Makan");
-        Herbivora hewan2 = new Herbivora("Kambing", "Rumput", "Ladang",
-                "Hewan herbivora yang suka memakan dedaunan",
-                "Mbee", "Tidur");
-        Karnivora hewan3 = new Karnivora("Elang", "Daging", "Gunung",
-                "Hewan berdarah panas, mempunyai sayap dan tubuh yang diselubungi bulu pelepah",
-                "Skriaa",
-                "Bertengger");
+        Scanner scanner = new Scanner(System.in);
 
-        daftarHewan[0] = hewan1;
-        daftarHewan[1] = hewan2;
-        daftarHewan[2] = hewan3;
+        while (true) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Tambah Hewan");
+            System.out.println("2. Tampilkan Hewan");
+            System.out.println("3. Swipe Hewan");
+            System.out.println("4. Keluar");
+            System.out.print("Pilih menu: ");
 
-        for (Hewan hewan : daftarHewan) {
-            hewan.info();
-            if (hewan instanceof Karnivora) {
-                Karnivora karnivora = (Karnivora) hewan;
-                karnivora.deskripsi();
-                karnivora.suara();
-                karnivora.kegiatan();
-            } else if (hewan instanceof Herbivora) {
-                Herbivora herbivora = (Herbivora) hewan;
-                herbivora.deskripsi();
-                herbivora.suara();
-                herbivora.kegiatan();
+            int pilihan = scanner.nextInt();
+            scanner.nextLine(); // Consume newline character
+
+            switch (pilihan) {
+                case 1:
+                    tambahHewan(scanner);
+                    break;
+                case 2:
+                    tampilkanHewan();
+                    break;
+                case 3:
+                    swipeHewan(scanner);
+                    break;
+                case 4:
+                    System.out.println("Keluar dari program.");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Pilihan tidak valid.");
             }
         }
+    }
 
-        int jumlahBinatang = daftarHewan.length;
-        System.out.println("Jumlah hewan di kebun binatang: " + jumlahBinatang);
-        System.out.println("=======================================");
+    static void tambahHewan(Scanner scanner) {
+        System.out.println("\nJenis Hewan:");
+        System.out.println("1. Herbivora");
+        System.out.println("2. Karnivora");
+        System.out.print("Pilih jenis hewan: ");
 
-        Pengunjung pengunjung1 = new Pengunjung("Jonathan", 17, "Jakarta",
-                "Laki-laki", "Kambing");
-        Pengunjung pengunjung2 = new Pengunjung("Fernando", 18, "Pontianak",
-                "Perempuan", "Harimau");
+        String jenisHewanInput = scanner.nextLine().trim().toLowerCase();
 
-        hewan1.deskripsi();
-        hewan2.suara();
-        hewan3.kegiatan();
+        int jenisHewan = 0;
+        if (jenisHewanInput.equals("herbivora")) {
+            jenisHewan = 1;
+        } else if (jenisHewanInput.equals("karnivora")) {
+            jenisHewan = 2;
+        } else {
+            System.out.println("Jenis hewan tidak valid. Masukkan 'Herbivora' atau 'Karnivora'.");
+            return;
+        }
 
-        pengunjung1.info();
-        pengunjung2.info();
-        System.out.println();
+        // Get animal details from the user
+        System.out.print("Nama hewan: ");
+        String namaHewan = scanner.nextLine();
+        System.out.print("Makanan: ");
+        String makanan = scanner.nextLine();
+        System.out.print("Habitat: ");
+        String habitat = scanner.nextLine();
+        System.out.print("Deskripsi: ");
+        String deskripsi = scanner.nextLine();
+        System.out.print("Suara: ");
+        String suara = scanner.nextLine();
+        System.out.print("Kegiatan: ");
+        String kegiatan = scanner.nextLine();
 
-        pengunjung1.HewanFavorit();
-        pengunjung2.HewanFavorit();
+        // Declare hewan outside the if blocks
+        Hewan hewan;
+
+        if (jenisHewan == 1) {
+            hewan = new Herbivora(namaHewan, makanan, habitat, deskripsi, suara, kegiatan);
+        } else if (jenisHewan == 2) {
+            hewan = new Karnivora(namaHewan, makanan, habitat, deskripsi, suara, kegiatan);
+        } else {
+            System.out.println("Jenis hewan tidak valid.");
+            return;
+        }
+
+        hewanArray[hewanCount] = hewan;
+        hewanCount++;
+        System.out.println("Hewan berhasil ditambahkan!");
+    }
+
+    static void tampilkanHewan() {
+        if (hewanCount == 0) {
+            System.out.println("Tidak ada hewan di dalam daftar.");
+            return;
+        }
+
+        System.out.println("\nDaftar Hewan:");
+        for (int i = 0; i < hewanCount; i++) {
+            System.out.println((i + 1) + ". " + hewanArray[i].getNamahewan());
+        }
+    }
+
+    static void swipeHewan(Scanner scanner) {
+        if (hewanCount == 0) {
+            System.out.println("Tidak ada hewan di dalam daftar.");
+            return;
+        }
+
+        System.out.println("\nSwipe Hewan:");
+        System.out.println("1. Swipe ke kanan (Next)");
+        System.out.println("2. Swipe ke kiri (Previous)");
+        System.out.print("Pilih aksi: ");
+
+        int aksi = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+
+        if (aksi == 1) {
+            currentIndex = (currentIndex + 1) % hewanCount;
+        } else if (aksi == 2) {
+            currentIndex = (currentIndex - 1 + hewanCount) % hewanCount;
+        } else {
+            System.out.println("Aksi tidak valid.");
+            return;
+        }
+
+        System.out.println("\nInformasi Hewan:");
+        System.out.println("\nInformasi Hewan:");
+        hewanArray[currentIndex].info();
+        hewanArray[currentIndex].deskripsi();
+        hewanArray[currentIndex].suara();
     }
 }

@@ -55,4 +55,10 @@ public abstract class Hewan {
 
     public abstract void info();
 
+    public abstract void deskripsi();
+
+    public abstract void suara();
+
+    public abstract void kegiatan();
+
 }
