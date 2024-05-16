@@ -1,6 +1,6 @@
 package KebunBinatang;
 
-class DoublyCircularLinkedList {
+class DoublyLinkedList {
     Node head;
 
     class Node {
