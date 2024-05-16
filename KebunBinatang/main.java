@@ -6,6 +6,8 @@ public class main {
     static Hewan[] hewanArray = new Hewan[10]; // Adjust size as needed
     static int hewanCount = 0;
     static int currentIndex = 0;
+    static UndoAction[] undoStack = new UndoAction[10]; // Array-based stack
+    static int top = -1; // Index of the top element in the stack
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -15,7 +17,9 @@ public class main {
             System.out.println("1. Tambah Hewan");
             System.out.println("2. Tampilkan Hewan");
             System.out.println("3. Swipe Hewan");
-            System.out.println("4. Keluar");
+            System.out.println("4. Swap Hewan");
+            System.out.println("5. Undo"); // Add the Undo option
+            System.out.println("6. Keluar");
             System.out.print("Pilih menu: ");
 
             int pilihan = scanner.nextInt();
@@ -32,6 +36,12 @@ public class main {
                     swipeHewan(scanner);
                     break;
                 case 4:
+                    swapHewan(scanner);
+                    break;
+                case 5:
+                    undo(); // Call the undo function
+                    break;
+                case 6:
                     System.out.println("Keluar dari program.");
                     scanner.close();
                     return;
@@ -87,6 +97,10 @@ public class main {
 
         hewanArray[hewanCount] = hewan;
         hewanCount++;
+
+        // Push the add action onto the undo stack
+        push(new UndoAction(UndoAction.Type.ADD, hewanCount - 1));
+
         System.out.println("Hewan berhasil ditambahkan!");
     }
 
@@ -116,6 +130,8 @@ public class main {
         int aksi = scanner.nextInt();
         scanner.nextLine(); // Consume newline character
 
+        int previousIndex = currentIndex; // Store the previous index for undo
+
         if (aksi == 1) {
             currentIndex = (currentIndex + 1) % hewanCount;
         } else if (aksi == 2) {
@@ -126,9 +142,85 @@ public class main {
         }
 
         System.out.println("\nInformasi Hewan:");
-        System.out.println("\nInformasi Hewan:");
         hewanArray[currentIndex].info();
         hewanArray[currentIndex].deskripsi();
         hewanArray[currentIndex].suara();
+
+        // Push the swipe action onto the undo stack
+        push(new UndoAction(UndoAction.Type.SWIPE, currentIndex));
+    }
+
+    static void swapHewan(Scanner scanner) {
+        if (hewanCount < 2) {
+            System.out.println("Tidak cukup hewan untuk di-swap.");
+            return;
+        }
+
+        System.out.println("\nSwap Hewan:");
+        System.out.print("Masukkan indeks hewan pertama: ");
+        int index1 = scanner.nextInt() - 1;
+        scanner.nextLine(); // Consume newline character
+
+        System.out.print("Masukkan indeks hewan kedua: ");
+        int index2 = scanner.nextInt() - 1;
+        scanner.nextLine(); // Consume newline character
+
+        if (index1 < 0 || index1 >= hewanCount || index2 < 0 || index2 >= hewanCount) {
+            System.out.println("Indeks hewan tidak valid.");
+            return;
+        }
+
+        // Swap the animals in the array
+        Hewan temp = hewanArray[index1];
+        hewanArray[index1] = hewanArray[index2];
+        hewanArray[index2] = temp;
+
+        // Push the swap action onto the undo stack
+        push(new UndoAction(UndoAction.Type.SWAP, index1, index2));
+
+        System.out.println("Hewan berhasil di-swap!");
+    }
+
+    static void undo() {
+        if (isEmpty()) {
+            System.out.println("Tidak ada aksi yang dapat di-undo.");
+            return;
+        }
+
+        UndoAction action = undoStack[top]; // Get the top action
+        top--; // Pop the top action
+
+        // Perform the undo operation based on the action type
+        if (action.getType() == UndoAction.Type.ADD) {
+            hewanCount--;
+            hewanArray[hewanCount] = null;
+        } else if (action.getType() == UndoAction.Type.SWIPE) {
+            currentIndex = action.getIndex();
+        } else if (action.getType() == UndoAction.Type.SWAP) {
+            // Swap back to the original positions
+            Hewan temp = hewanArray[action.getIndex1()];
+            hewanArray[action.getIndex1()] = hewanArray[action.getIndex2()];
+            hewanArray[action.getIndex2()] = temp;
+        }
+
+        System.out.println("Aksi berhasil di-undo.");
+    }
+
+    // Helper functions for the manual stack
+    static boolean isEmpty() {
+        return (top == -1);
+    }
+
+    static void push(UndoAction action) {
+        if (isFull()) {
+            System.out.println("Stack is full");
+            return;
+        }
+        top++; // Increment top index
+        undoStack[top] = action; // Assign the action to the current top index
+    }
+
+    static boolean isFull() {
+        return (top == undoStack.length - 1);
     }
 }
