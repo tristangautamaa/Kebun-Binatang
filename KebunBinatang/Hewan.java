@@ -1,6 +1,6 @@
 package KebunBinatang;
 
-public abstract class Hewan {
+abstract class Hewan {
     protected String namahewan;
     protected String makanan;
     protected String habitat;

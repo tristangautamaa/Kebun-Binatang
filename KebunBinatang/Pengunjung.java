@@ -1,7 +1,6 @@
 package KebunBinatang;
 
 class Pengunjung {
-    // isinya atribut dan constructor dari pengunjungnya
     private String nama;
     private int umur;
     private String asal;
@@ -16,7 +15,6 @@ class Pengunjung {
         this.hewanFavorit = hewanFavorit;
     }
 
-    // getter setter untuk mencegah input manual
     public String getNama() {
         return nama;
     }

@@ -3,24 +3,15 @@ package KebunBinatang;
 import java.util.Scanner;
 
 class VisitorQueue {
-    private int maxSize = 5;
-    private Pengunjung[] queueArray = new Pengunjung[maxSize];
-    private int front;
-    private int rear;
-    private int nItems;
+    private Node head;
+    private Node tail;
 
     public VisitorQueue() {
-        front = 0;
-        rear = -1;
-        nItems = 0;
+        head = null;
+        tail = null;
     }
 
     public void tambahPengunjung(Scanner scanner) {
-        if (isFull()) {
-            System.out.println("Antrian Pengunjung penuh.");
-            return;
-        }
-
         System.out.print("Nama pengunjung: ");
         String nama = scanner.nextLine();
         System.out.print("Umur pengunjung: ");
@@ -35,8 +26,19 @@ class VisitorQueue {
 
         Pengunjung pengunjung = new Pengunjung(nama, umur, asal, jenisKelamin, hewanFavorit);
 
+        if (isInQueue(pengunjung.getNama())) {
+            System.out.println("Pengunjung " + pengunjung.getNama() + " sudah berada di antrian.");
+            return;
+        }
+
         enqueue(pengunjung);
         System.out.println("Pengunjung berhasil ditambahkan ke antrian.");
+
+        if (!isEmpty()) {
+            System.out
+                    .println("\nPengunjung saat ini sedang mengunjungi Kebun Binatang: " + head.data.getNama());
+            System.out.println("Pengunjung " + pengunjung.getNama() + " sedang menunggu dalam antrian.");
+        }
     }
 
     public void tampilkanPengunjung() {
@@ -46,37 +48,70 @@ class VisitorQueue {
         }
 
         System.out.println("\nAntrian Pengunjung:");
-        for (int i = 0; i < nItems; i++) {
-            int index = (front + i) % maxSize; // Calculate the actual index
-            System.out.println((i + 1) + ". " + queueArray[index].getNama());
+        Node current = head;
+        int i = 1;
+        while (current != null) {
+            System.out.println(i + ". " + current.data.getNama());
+            current = current.next;
+            i++;
         }
     }
 
-    // Queue operations
     public void enqueue(Pengunjung pengunjung) {
-        if (rear == maxSize - 1) {
-            rear = -1; // Wrap around to the beginning
+        Node newNode = new Node(pengunjung);
+        if (isEmpty()) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
         }
-        rear++;
-        queueArray[rear] = pengunjung;
-        nItems++;
     }
 
     public Pengunjung dequeue() {
         if (isEmpty()) {
             return null;
         }
-        Pengunjung temp = queueArray[front];
-        front = (front + 1) % maxSize; // Wrap around
-        nItems--;
+        Pengunjung temp = head.data;
+        head = head.next;
+        if (head == null) {
+            tail = null;
+        }
         return temp;
     }
 
     public boolean isEmpty() {
-        return (nItems == 0);
+        return (head == null);
     }
 
-    public boolean isFull() {
-        return (nItems == maxSize);
+    public void visitZoo() {
+        if (!isEmpty()) {
+            Pengunjung currentVisitor = dequeue();
+            System.out.println(
+                    "\nPengunjung " + currentVisitor.getNama() + " sekarang sedang mengunjungi Kebun Binatang.");
+        } else {
+            System.out.println("\nTidak ada orang dalam antrian.");
+        }
+    }
+
+    private class Node {
+        private Pengunjung data;
+        private Node next;
+
+        public Node(Pengunjung data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    private boolean isInQueue(String visitorName) {
+        Node current = head;
+        while (current != null) {
+            if (current.data.getNama().equals(visitorName)) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
     }
 }

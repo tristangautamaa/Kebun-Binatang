@@ -1,14 +1,14 @@
 package KebunBinatang;
 
-class UndoAction { // Remove the 'static' keyword here
+class UndoAction {
     enum Type {
         ADD, SWIPE, SWAP
     }
 
     private Type type;
-    private int index; // Used for swipe
-    private int index1; // Used for swap
-    private int index2; // Used for swap
+    private int index;
+    private int index1;
+    private int index2;
 
     UndoAction(Type type, int index) {
         this.type = type;
