@@ -21,11 +21,12 @@ public class main {
             System.out.println("2. Tampilkan Hewan");
             System.out.println("3. Swipe Hewan");
             System.out.println("4. Swap Hewan");
-            System.out.println("5. Batal Tambah Hewan");
-            System.out.println("6. Tambah Pengunjung");
-            System.out.println("7. Tampilkan Pengunjung");
-            System.out.println("8. Pengunjung Masuk");
-            System.out.println("9. Keluar");
+            System.out.println("5. Hapus Hewan");
+            System.out.println("6. Batal Tambah Hewan");
+            System.out.println("7. Tambah Pengunjung");
+            System.out.println("8. Tampilkan Pengunjung");
+            System.out.println("9. Pengunjung Masuk");
+            System.out.println("10. Keluar");
             System.out.print("Pilih menu: ");
 
             try {
@@ -46,18 +47,21 @@ public class main {
                         zooKeeper.swapHewan(scanner);
                         break;
                     case 5:
-                        zooKeeper.undo();
+                        zooKeeper.deleteHewan(scanner);
                         break;
                     case 6:
-                        visitorQueue.tambahPengunjung(scanner);
+                        zooKeeper.undo();
                         break;
                     case 7:
-                        visitorQueue.tampilkanPengunjung();
+                        visitorQueue.tambahPengunjung(scanner);
                         break;
                     case 8:
-                        visitorQueue.visitZoo();
+                        visitorQueue.tampilkanPengunjung();
                         break;
                     case 9:
+                        visitorQueue.visitZoo();
+                        break;
+                    case 10:
                         System.out.println("Terima kasih sudah berkunjung ke kebun binatang.");
                         scanner.close();
                         return;

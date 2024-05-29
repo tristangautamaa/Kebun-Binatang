@@ -12,4 +12,6 @@ interface ZooInterface {
     void swapHewan(Scanner scanner);
 
     void undo();
+
+    void deleteHewan(Scanner scanner);
 }

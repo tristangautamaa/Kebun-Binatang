@@ -126,6 +126,40 @@ class ZooKeeper implements ZooInterface {
     }
 
     @Override
+    public void deleteHewan(Scanner scanner) {
+        if (hewanCount == 0) {
+            System.out.println("Tidak ada hewan di dalam daftar.");
+            return;
+        }
+
+        tampilkanHewan();
+
+        System.out.print("\nMasukkan urutan hewan yang ingin dihapus: ");
+        int index = scanner.nextInt() - 1;
+        scanner.nextLine();
+
+        if (index < 0 || index >= hewanCount) {
+            System.out.println("Indeks hewan tidak valid.");
+            return;
+        }
+
+        for (int i = index; i < hewanCount - 1; i++) {
+            hewanArray[i] = hewanArray[i + 1];
+        }
+
+        hewanCount--;
+        hewanArray[hewanCount] = null;
+
+        if (currentIndex >= index) {
+            currentIndex = (currentIndex - 1 + hewanCount) % hewanCount;
+        }
+
+        push(new UndoAction(UndoAction.Type.ADD, index));
+
+        System.out.println("Hewan berhasil dihapus!");
+    }
+
+    @Override
     public void tambahHewan(Scanner scanner) {
         System.out.println("\nJenis Hewan:");
         System.out.println("- Herbivora");
